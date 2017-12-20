@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block head %}
+        <title>{% block title %}{% endblock %} - The Acme Co.</title>
+    {% endblock %}
+</head>
+<body>
+    <div id="logo">
+        <img src="{{ url_for('static', filename='acme_logo.png') }}" alt="Acme Copr." />
+    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <div id="content">
+        {% block content %} {% endblock %}
+    </div>
+    
+    <br />
+    
+    <footer>
+        {% block footer %}
+            &copy; Copyright 2017 by <a href="http://acmeco.com">The Acme Co.</a>
+        {% endblock %}
+    </footer>
+</body>
+</html>

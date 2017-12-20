@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <!-- calling super will inherit the head section here from the base template.
+         Without super() the script tag here will override the head content from base.html -->
+    {{ super() }}
+    <script type="text/javascript">var x = "test";</script>
+{% endblock %}
+
+{% block title %}Welcome{% endblock %}
+    
+{% block content %}    
+    <p><b>Welcome</b>, {{ username }} - <a href="{{ url_for('logout') }}">logout</a></p>
+{% endblock %}
